@@ -3,6 +3,7 @@ package com.gree.scada.config;
 import com.alibaba.fastjson.JSONObject;
 import com.gree.scada.util.RestTemplateUtil;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
@@ -22,6 +23,7 @@ public class TokenConfig {
     /**
      * 企业ID
      */
+
 
     public String scorpid;
 
@@ -52,11 +54,10 @@ public class TokenConfig {
     /**
      * 获取access_token
      */
-    @PostConstruct
     private String getAccessToken(){
-        RestTemplate restTemplate = new RestTemplate();
-        String url= WeChatData.TOKEN_URL.replace("CORPID", "ww189b700b23807b80").replace("CORPSECRET", "uFJ4UBY0RNiYcMRJNZ6c8NJ0Ko8ZnsiKxPVoLFdlVjc");
+        String url= WeChatData.TOKEN_URL.replace("CORPID", WeChatData.corpid).replace("CORPSECRET", WeChatData.corpsecret);
         JSONObject jsonObject = RestTemplateUtil.doGet(url);
+        System.out.println("token："+jsonObject);
         String access_token = jsonObject.getString("access_token");
         return access_token;
 }

@@ -1,9 +1,6 @@
-package com.gree.scada.common.po.response;
+package com.gree.scada.entity.response.param;
 
-import com.google.gson.JsonObject;
 import lombok.Data;
-
-import java.util.List;
 
 /**
  * @program: WeChat

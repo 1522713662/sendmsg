@@ -1,6 +1,6 @@
-package com.gree.scada.common.po.response;
+package com.gree.scada.entity.response.param;
 
-import com.gree.scada.common.po.response.Btn;
+import com.gree.scada.entity.response.param.Btn;
 import lombok.Data;
 
 import java.util.List;
@@ -15,9 +15,8 @@ import java.util.UUID;
  **/
 @Data
 public class TaskCard{
-    private String title;
+    private String title = "生产消息";
     private String description;
     private String task_id = UUID.randomUUID().toString();
-    //private List<JsonObject> btn;
     private List<Btn> btn;
 }

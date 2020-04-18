@@ -4,7 +4,6 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.UUID;
 
 public class WeChatData {
 
@@ -14,7 +13,8 @@ public class WeChatData {
     public static String agentid = "";
     public static String TOKEN_URL = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=CORPID&corpsecret=CORPSECRET";
     public static String SEND_URL = "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=ACCESS_TOKEN";
-    public static String task_id = UUID.randomUUID().toString();
+    public static String token = "";
+    public static String encodingAESKey = "";
 
 
     public void initProperties() {
@@ -40,6 +40,9 @@ public class WeChatData {
         corpid = properties.getProperty("corpid");
         corpsecret = properties.getProperty("corpsecret");
         agentid = properties.getProperty("agentid");
+        token = properties.getProperty("token");
+        encodingAESKey = properties.getProperty("encodingAESKey");
+
     }
 
 }

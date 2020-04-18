@@ -20,8 +20,8 @@ public class RestTemplateUtil {
      */
     public static JSONObject doGet(String url){
         RestTemplate restTemplate = new RestTemplate();
-        String s = restTemplate.getForObject(url, String.class, TokenConfig.getInstance().token);
-        System.out.println(s);
+        String s = restTemplate.getForObject(url, String.class);
+        System.out.println("doGet:"+s);
         JSONObject result = JSONObject.parseObject(s);
         if (result != null) {
             if (result.getInteger("errcode") == null) {
@@ -53,6 +53,7 @@ public class RestTemplateUtil {
         HttpEntity requestEntity = new HttpEntity(JSONObject.toJSONString(po), RestTemplateUtil.getHeaders());
         RestTemplate restTemplate = new RestTemplate();
         String s = restTemplate.postForObject(url,requestEntity, String.class, TokenConfig.getInstance().token);
+        System.out.println(s);
         JSONObject result = JSONObject.parseObject(s);
         if (result != null) {
             if (result.getInteger("errcode") == null) {
