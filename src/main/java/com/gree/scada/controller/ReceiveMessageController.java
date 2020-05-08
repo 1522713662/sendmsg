@@ -1,5 +1,6 @@
 package com.gree.scada.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.gree.scada.config.WeChatData;
 import com.gree.scada.entity.request.ReceiveTaskCardPo;
@@ -61,6 +62,7 @@ public class ReceiveMessageController {
             if (out != null) {
                 out.close();
                 out = null;                      //释放资源
+
             }
         }
     }
@@ -82,7 +84,8 @@ public class ReceiveMessageController {
 
         String type = jsonObject.getString("Event");
         if (type.equals("taskcard_click") ){
-            ReceiveTaskCardPo receiveTaskCardPo = ReplyMsgUtil.xmlStrToPo(respMessage,ReceiveTaskCardPo.class);
+            ReceiveTaskCardPo receiveTaskCardPo = JSONArray.parseObject(String.valueOf(jsonObject), ReceiveTaskCardPo.class);
+            //ReceiveTaskCardPo receiveTaskCardPo = ReplyMsgUtil.xmlStrToPo(respMessage,ReceiveTaskCardPo.class);
             System.out.println("接收响应"+receiveTaskCardPo);
             receiveMessageService.judgeState(receiveTaskCardPo);
         }

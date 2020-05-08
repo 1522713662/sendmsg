@@ -12,6 +12,7 @@ public class WeChatData {
     public static String corpsecret = "";
     public static String agentid = "";
     public static String TOKEN_URL = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=CORPID&corpsecret=CORPSECRET";
+    public static String JSTICKET_URL = "https://qyapi.weixin.qq.com/cgi-bin/get_jsapi_ticket?access_token=ACCESS_TOKEN&type=agent_config";
     public static String SEND_URL = "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=ACCESS_TOKEN";
     public static String token = "";
     public static String encodingAESKey = "";

@@ -1,8 +1,6 @@
 package com.gree.scada.util;
 
 
-
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.gree.scada.config.WeChatData;
@@ -15,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 /**
  * @program: WeChat
  * @CladdName ReplyMsgUtil.java

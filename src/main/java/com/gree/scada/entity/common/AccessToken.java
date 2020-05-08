@@ -1,7 +1,9 @@
-package com.gree.scada.config;
+package com.gree.scada.entity.common;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.gree.scada.config.WeChatData;
 import com.gree.scada.util.RestTemplateUtil;
 import lombok.Data;
 
@@ -28,6 +30,7 @@ public class AccessToken {
         String url= WeChatData.TOKEN_URL.replace("CORPID", WeChatData.corpid).replace("CORPSECRET", WeChatData.corpsecret);
         JSONObject jsonObject = RestTemplateUtil.doGet(url);
         AccessToken accessToken = JSONArray.parseObject(String.valueOf(jsonObject), AccessToken.class);
+        accessToken.setToken(jsonObject.getString("access_token"));
         return accessToken;
     }
 }

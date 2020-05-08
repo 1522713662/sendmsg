@@ -1,7 +1,7 @@
 package com;
 
 
-import com.gree.scada.config.TokenThread;
+import com.gree.scada.config.VerifyThread;
 import com.gree.scada.config.WeChatData;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootConfiguration;
@@ -19,7 +19,7 @@ public class App {
     public static void main(String[] args) {
         WeChatData weChatData = new WeChatData();
         weChatData.initProperties();
-        new Thread(new TokenThread()).start();
+        new Thread(new VerifyThread()).start();
         SpringApplication.run(App.class,args);
     }
 }

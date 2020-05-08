@@ -2,8 +2,7 @@ package com.gree.scada.service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.gree.scada.config.TokenConfig;
-import com.gree.scada.config.TokenThread;
+import com.gree.scada.config.VerifyThread;
 import com.gree.scada.config.WeChatData;
 import com.gree.scada.entity.response.TaskCardPo;
 import com.gree.scada.entity.response.param.Btn;
@@ -24,29 +23,11 @@ public class SendMessageServiceImpl implements SendMessageService{
 
 
 
+    //第一次推送
     /**
      * 模板——发送应用消息(任务卡片)
-     * @param toUser
-     * @param description
+     * @param jsonObject
      */
-    @Override
-    public void sendTaskCard(String toUser,String description){
-        TaskCard taskCard = new TaskCard();
-        List<Btn> btn = new ArrayList<>();
-        btn.add(new Btn());
-        taskCard.setBtn(btn);
-        taskCard.setDescription(description);
-        TaskCardPoParam po = new TaskCardPoParam();
-        po.setTaskcard(taskCard);
-        po.setTouser(toUser);
-        po.setAgentid(WeChatData.agentid);
-        //拼接请求url
-        String url=WeChatData.SEND_URL.replace("ACCESS_TOKEN", TokenConfig.getInstance().token);
-        JSONObject jsonObject = RestTemplateUtil.doPost(url, po);
-
-    }
-
-    //第一次推送
     @Override
     public void firstPush(JSONObject jsonObject ){
         String toUser = jsonObject.getString("touser");
@@ -60,7 +41,7 @@ public class SendMessageServiceImpl implements SendMessageService{
         po.setTaskcard(taskCard);
         po.setTouser(toUser);
         //拼接请求url
-        String url=WeChatData.SEND_URL.replace("ACCESS_TOKEN", TokenThread.accessToken.getToken());
+        String url=WeChatData.SEND_URL.replace("ACCESS_TOKEN", VerifyThread.accessToken.getToken());
         //推送警告
         RestTemplateUtil.doPost(url, po);
         TaskCardPo taskCardPo = JSONArray.parseObject(String.valueOf(jsonObject), TaskCardPo.class);
@@ -83,7 +64,7 @@ public class SendMessageServiceImpl implements SendMessageService{
         po.setTaskcard(taskCard);
         po.setTouser(findOne.getLaster());
         //拼接请求url
-        String url=WeChatData.SEND_URL.replace("ACCESS_TOKEN", TokenThread.accessToken.getToken());
+        String url=WeChatData.SEND_URL.replace("ACCESS_TOKEN", VerifyThread.accessToken.getToken());
         //再次推送警告
         RestTemplateUtil.doPost(url, po);
         findOne.setStatus(2);

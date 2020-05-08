@@ -1,7 +1,7 @@
 package com.gree.scada.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.gree.scada.config.TokenConfig;
+import com.gree.scada.config.VerifyThread;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -23,6 +23,7 @@ public class RestTemplateUtil {
         String s = restTemplate.getForObject(url, String.class);
         System.out.println("doGet:"+s);
         JSONObject result = JSONObject.parseObject(s);
+        System.out.println(result);
         if (result != null) {
             if (result.getInteger("errcode") == null) {
                 return result;
@@ -52,7 +53,7 @@ public class RestTemplateUtil {
     public static <T> JSONObject doPost(String url,T po){
         HttpEntity requestEntity = new HttpEntity(JSONObject.toJSONString(po), RestTemplateUtil.getHeaders());
         RestTemplate restTemplate = new RestTemplate();
-        String s = restTemplate.postForObject(url,requestEntity, String.class, TokenConfig.getInstance().token);
+        String s = restTemplate.postForObject(url,requestEntity, String.class, VerifyThread.accessToken.getToken());
         System.out.println(s);
         JSONObject result = JSONObject.parseObject(s);
         if (result != null) {

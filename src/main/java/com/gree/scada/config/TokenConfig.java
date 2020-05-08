@@ -3,10 +3,6 @@ package com.gree.scada.config;
 import com.alibaba.fastjson.JSONObject;
 import com.gree.scada.util.RestTemplateUtil;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.client.RestTemplate;
-
-import javax.annotation.PostConstruct;
 
 /**
  * @program: scada_weixin
@@ -23,7 +19,6 @@ public class TokenConfig {
     /**
      * 企业ID
      */
-
 
     public String scorpid;
 

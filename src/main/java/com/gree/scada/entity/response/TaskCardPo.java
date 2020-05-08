@@ -10,7 +10,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  * @program: WeChat
@@ -73,6 +72,7 @@ public class TaskCardPo implements Serializable {
     @Column(name = "mttf")
     private Integer mttf;
 
+    //第二次推送人员标签
     @Column(name = "laster")
     private String laster;
 
