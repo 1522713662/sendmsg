@@ -1,4 +1,4 @@
-package com.gree.scada.service;
+package com.gree.scada.service.impl;
 
 import com.gree.scada.entity.request.ReceiveTaskCardPo;
 import com.gree.scada.entity.response.TaskCardPo;

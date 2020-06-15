@@ -3,9 +3,10 @@ package com.gree.scada.controller;
 import com.gree.scada.config.VerifyThread;
 import com.gree.scada.entity.common.ResultEntity;
 import com.gree.scada.util.SignatureUtil;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.gree.scada.util.auth;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.UnsupportedEncodingException;
 
 /**
  * @program: WeChat
@@ -17,19 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/param")
+@CrossOrigin
 public class paramController {
 
-    @GetMapping("/getToken")
-    public ResultEntity gettoken(){
-    return ResultEntity.success(VerifyThread.accessToken.getToken());
+    @PostMapping("/getSignature")
+    public ResultEntity getSignature(@RequestParam String url) throws UnsupportedEncodingException {return ResultEntity.success(SignatureUtil.getSignature(url)); }
+
+    @GetMapping("/getCode")
+    public ResultEntity getCode() throws UnsupportedEncodingException {
+        return ResultEntity.success(auth.getCode());
     }
 
-    @GetMapping("/getTicket")
-    public ResultEntity getTicket(){
-        return ResultEntity.success(VerifyThread.jsapiTicket.getTicket());
-    }
 
 
-    //@GetMapping("")
-    public ResultEntity getSignature(){return ResultEntity.success(SignatureUtil.getSignature()); }
+
+
+
 }

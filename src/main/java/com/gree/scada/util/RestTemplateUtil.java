@@ -21,9 +21,9 @@ public class RestTemplateUtil {
     public static JSONObject doGet(String url){
         RestTemplate restTemplate = new RestTemplate();
         String s = restTemplate.getForObject(url, String.class);
-        System.out.println("doGet:"+s);
+        //System.out.println("doGet:"+s);
         JSONObject result = JSONObject.parseObject(s);
-        System.out.println(result);
+        System.out.println("doget请求结果："+result);
         if (result != null) {
             if (result.getInteger("errcode") == null) {
                 return result;
@@ -54,7 +54,7 @@ public class RestTemplateUtil {
         HttpEntity requestEntity = new HttpEntity(JSONObject.toJSONString(po), RestTemplateUtil.getHeaders());
         RestTemplate restTemplate = new RestTemplate();
         String s = restTemplate.postForObject(url,requestEntity, String.class, VerifyThread.accessToken.getToken());
-        System.out.println(s);
+        System.out.println("dopost结果："+s);
         JSONObject result = JSONObject.parseObject(s);
         if (result != null) {
             if (result.getInteger("errcode") == null) {

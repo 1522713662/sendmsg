@@ -2,6 +2,10 @@ package com.gree.scada.util;
 
 import com.gree.scada.config.VerifyThread;
 
+import javax.xml.crypto.Data;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -29,7 +33,7 @@ public class SignatureUtil {
      * 获取签名
      * @return map(noncestr,timestamp,signature)
      */
-    public static Map<String, String> getSignature(){
+    public static Map<String, String> getSignature(String sigurl) throws UnsupportedEncodingException {
 
         Map<String,String> map =  new HashMap<>();
         String noncestr = create_nonce_str();
@@ -37,17 +41,18 @@ public class SignatureUtil {
 
         map.put("noncestr",noncestr);
         map.put("timestamp",timestamp);
-        //URL取值？？？？
-        String url="http://www.WEIXIN.com/add.html";
+        //String sigurl = URLDecoder.decode(sigurl,"UTF-8");
 
         String str = "jsapi_ticket="+ VerifyThread.jsapiTicket.getTicket() +
-                "&noncestr="+noncestr+ "&timestamp="+timestamp+"&url="+url;
+                "&noncestr="+noncestr+ "&timestamp="+timestamp+"&url="+sigurl;
 
 
         String signature =SHA1(str);
         System.out.println("参数："+str+"\n签名："+signature);
 
         map.put("signature",signature);
+        System.out.println(map);
+        System.out.println(sigurl);
         return map;
     }
 }

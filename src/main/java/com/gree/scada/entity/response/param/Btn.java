@@ -13,4 +13,5 @@ import lombok.Data;
 public class Btn {
     private String key = "key1";
     private String name = "确定";
+    private String color = "blue";
 }

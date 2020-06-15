@@ -2,13 +2,10 @@ package com.gree.scada.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gree.scada.service.SendMessageService;
-import com.gree.scada.service.SendMessageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.UUID;
 
 /**
  * @program: WeChat
@@ -27,7 +24,7 @@ public class SendMessageServiceController {
     public void sendMsg(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("touser","260340");
-        jsonObject.put("description","温度高");
+        jsonObject.put("description","<div class=\"gray\">温度</div><br><div class=\"highlight\">过高</div><br><div class=\"normal\">默认</div>");
         jsonObject.put("mttf",20);
         jsonObject.put("laster","260340");
         sendMessageService.firstPush(jsonObject);

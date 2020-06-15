@@ -1,4 +1,4 @@
-package com.gree.scada.service;
+package com.gree.scada.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -9,14 +9,17 @@ import com.gree.scada.entity.response.param.Btn;
 import com.gree.scada.entity.response.param.TaskCard;
 import com.gree.scada.entity.response.param.TaskCardPoParam;
 import com.gree.scada.repository.TaskCardPoRepository;
+import com.gree.scada.service.SendMessageService;
 import com.gree.scada.util.RestTemplateUtil;
+import javafx.scene.canvas.GraphicsContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 @Service
-public class SendMessageServiceImpl implements SendMessageService{
+public class SendMessageServiceImpl implements SendMessageService {
+
 
     @Autowired
     TaskCardPoRepository taskCardPoRepository;

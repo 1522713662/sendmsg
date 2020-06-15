@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.gree.scada.config.WeChatData;
 import com.gree.scada.entity.request.ReceiveTaskCardPo;
-import com.gree.scada.service.ReceiveMessageServiceImpl;
+import com.gree.scada.service.impl.ReceiveMessageServiceImpl;
 import com.gree.scada.util.ReplyMsgUtil;
 import com.qq.weixin.mp.aes.AesException;
 import com.qq.weixin.mp.aes.WXBizMsgCrypt;

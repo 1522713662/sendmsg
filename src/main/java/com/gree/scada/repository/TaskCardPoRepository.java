@@ -1,7 +1,6 @@
 package com.gree.scada.repository;
 
 import com.gree.scada.entity.response.TaskCardPo;
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -18,7 +17,7 @@ import java.util.List;
 
 
 //@Repository
-public interface TaskCardPoRepository extends JpaRepository<TaskCardPo, ID> {
+public interface TaskCardPoRepository extends JpaRepository<TaskCardPo, Integer> {
 
     @Query(value = "select status FROM push_message where task_id = ?1",nativeQuery = true)
     Integer getStatusByTaskId(String taskId);

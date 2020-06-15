@@ -2,6 +2,7 @@ package com.gree.scada.scheduler;
 
 import com.gree.scada.entity.response.TaskCardPo;
 import com.gree.scada.repository.TaskCardPoRepository;
+import com.gree.scada.repository.service.RosterReppsitory;
 import com.gree.scada.service.SendMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -25,6 +26,7 @@ public class PushCheck {
 
     @Autowired
     SendMessageService sendMessageService;
+
 
 
     /**
